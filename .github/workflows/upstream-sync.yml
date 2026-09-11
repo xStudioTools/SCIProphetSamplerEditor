@@ -1,0 +1,46 @@
+name: Sync Prophet2012 reference archive
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: upstream-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the default branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Mirror upstream into the reference archive
+        id: upstream
+        run: bash scripts/sync-upstream.sh
+
+      - name: Open or update the archive sync pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/upstream-sync
+          base: ${{ github.event.repository.default_branch }}
+          add-paths: legacy-prophet2012/
+          commit-message: 'chore(legacy): sync Prophet2012 at ${{ steps.upstream.outputs.sha }}'
+          title: 'chore(legacy): sync upstream Prophet2012'
+          body: |
+            Mirror the tracked upstream tree into `legacy-prophet2012/` only.
+
+            Source: https://github.com/wusel76/Prophet2012
+            Commit: ${{ steps.upstream.outputs.sha }}
+
+            Includes upstream additions, modifications, and deletions. No upstream code was executed.
+            Review and merge this snapshot to update the reference archive.
