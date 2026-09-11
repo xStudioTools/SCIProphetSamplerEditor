@@ -1,0 +1,8 @@
+{
+  "name": "@sci-prophet/desktop",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "GPL-3.0-only",
+  "description": "Planned Electron desktop host for macOS, Windows, and Linux."
+}

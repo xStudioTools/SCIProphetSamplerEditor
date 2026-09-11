@@ -1,0 +1,8 @@
+{
+  "name": "@sci-prophet/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "GPL-3.0-only",
+  "description": "Planned shared TypeScript MIDI, SysEx, SDS, and Prophet memory library."
+}
