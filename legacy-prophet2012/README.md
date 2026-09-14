@@ -12,6 +12,7 @@ Some parts were for testing purposes and have not been part in the released vers
 
 I am releasing this software under the license in order you have to release any changes as open source again. So further releases must be in addition free of any charge. No paywalls or payments for this software or final product are allowed.
 
+
 <!-- archived-reference-materials:start -->
 ## Archived Reference Materials
 
