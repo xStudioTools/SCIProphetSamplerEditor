@@ -1,16 +1,36 @@
-I decided to make the Prophet 2012 editor and librarian for the Sequential Circuits SCI Samplers 2000 and 2002 open source.
+# Prophet2012
 
-Currently there are no build projects or scripts present. I and Bertil (RIP buddy!) have written this editor quite a while ago, and a lot of the toolchain has been lost. 
+Prophet2012 is an editor and librarian for the Sequential Circuits SCI samplers **Prophet 2000** and **Prophet 2002**. It transfers samples, sounds, maps and presets between the sampler and the computer via MIDI and lets you edit them on screen.
 
-Main current issue is that there is no new Apple Silicon build available. 
+## Download
 
-Hopefully the project could be maintained by the community in order to have recent builds for recent platforms.
+The current macOS version is available on the [releases page](https://github.com/wusel76/Prophet2012/releases):
 
-The entire GUI of the editor is based on wxWidgets-2.8.12. The GUI layout had been created with wxFormBuilder_v3.3.4 (I believe) – but there might be some hardcoded tweaks in the implementation.
+- **v1.5 beta** – universal binary for Apple Silicon and Intel Macs, macOS 12 or later
 
-Some parts were for testing purposes and have not been part in the released versions. So there is not really something cleaned up so far and I am going to provide everything as is.
+Open `Prophet2012.dmg` and drag Prophet2012 to Applications. The app is not notarized, so macOS blocks the first start: right click on the app → Open, or allow it in System Settings → Privacy & Security.
 
-I am releasing this software under the license in order you have to release any changes as open source again. So further releases must be in addition free of any charge. No paywalls or payments for this software or final product are allowed.
+## Documentation
+
+The [Prophet2012 user manual](docs/manual/README.md) describes all functions with screenshots. The original Word document is in [docs](docs/Prophet2012_Manual.doc).
+
+## Building
+
+- **macOS:** Xcode project and build scripts are included, see [Install_MacOS.md](Install_MacOS.md). The third party libraries (wxWidgets, PortAudio, PortMidi, libsamplerate) are downloaded and built automatically.
+- **Windows:** there is currently no build project. The Windows specific sources (Win32 MIDI and serial port) are still contained in `SRCDIR`.
+
+## Background
+
+The GUI was originally based on wxWidgets 2.8.12, the layout had been created with wxFormBuilder 3.3.4 (I believe) – there might be some hardcoded tweaks in the implementation. The macOS version now uses wxWidgets 3.2; Mac specific adaptions of the layout are in `SRCDIR/macstyle.mm`.
+
+## Contributing
+
+Contributions are welcome – please open an issue or a pull request.
+
+## License
+
+I am releasing this software under the GNU Affero General Public License, version 3 (AGPL-3.0); see [LICENSE](LICENSE). My intent is that further releases and changes remain open source in accordance with this license. I also ask that further releases of this software or final product remain free of charge, without paywalls or payments. This is my wish rather than an additional license restriction: AGPL-3.0 permits charging for the software.
+
 
 <!-- archived-reference-materials:start -->
 ## Archived Reference Materials
